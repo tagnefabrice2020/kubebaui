@@ -95,6 +95,7 @@ const Profile = () => {
         switchWebCam(true)
         try {
             let videoSrc = await navigator.mediaDevices.getUserMedia({video: true})
+            //console.log(videoSrc)
             document.getElementById('webcam__video').srcObject = videoSrc
         } catch (e) {
             console.log(e)
@@ -149,7 +150,7 @@ const Profile = () => {
                                 <>
                                     <div className="video__wrapper">
                                         <div className="video__container">
-                                            <video autoPlay id="webcam__video"></video>
+                                            <video autoPlay id="webcam__video" width="400" height="400"></video>
                                         </div>
                                     </div>
                                 </>
