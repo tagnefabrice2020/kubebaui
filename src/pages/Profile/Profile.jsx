@@ -15,6 +15,9 @@ const Profile = () => {
         {name: 'back'},
         {name: 'front'}
     ])
+    let [imagePassportTypeNotSupported, setPassportImageTypeNotSupported] = useState(false)
+    let [frontNationalIdImageTypeNotSupported, setFrontNationalIdImageTypeNotSupported] = useState(false)
+    let [backNationalIdImageTypeNotSupported, setBackNationalIdImageTypeNotSupported] = useState(false)
     const [webCamOn, switchWebCam] = useState(false)
     
     const [webCamPhotosUrl, setWebCamPhotosUrl] = useState('')
@@ -26,16 +29,45 @@ const Profile = () => {
     const switchTab = (selectedTab) => {
         setTab(selectedTab) 
     } 
+
+    /**
+     * gets the file extension
+     * @param {*} fileName 
+     * @returns string
+     */
+    const getFileExtension = (fileName) => {
+        var parts = fileName.split('.')
+        return parts[parts.length - 1]
+    }
+
+    /**
+     * checks if file is an image and returns true or false
+     * @param fileName
+     * @return boolean
+     */
+    const isImage = (fileName) => {
+        //console.log(getFileExtension(fileName) + ' is image function')
+        var extension = getFileExtension(fileName)
+        switch (extension.toLowerCase()) {
+            case 'jpg':
+            case 'gif':
+            case 'bmp':
+            case 'png':
+                return true
+        }
+        return false
+    }
+
     /**
      * set which type of document to upload for identification
      * @param {*} event 
      * @return void
      */
     const selectDocType = async (event) => {
-        if(event.target.id == 'passportSelect'){
+        if(event.target.id === 'passportSelect'){
             setDoctype('passport')
             setSteps(2)
-        } else if (event.target.id == 'idSelected') {
+        } else if (event.target.id === 'idSelected') {
             setDoctype('id')
             setSteps(3)
         }
@@ -50,10 +82,17 @@ const Profile = () => {
             const reader = new FileReader()
             reader.addEventListener(
                 'load',
-                () => setPassportSrc(reader.result),
+                () => {
+                    setPassportSrc(reader.result)
+                }, 
                 false
             )
-            reader.readAsDataURL(event.target.files[0])
+            if(isImage(event.target.files[0].name) === true) {
+                reader.readAsDataURL(event.target.files[0])
+            } else {
+                setPassportSrc('')
+                setPassportImageTypeNotSupported(true)
+            }
         }
     }
     /**
@@ -68,7 +107,12 @@ const Profile = () => {
                 'load',
                 () => setFrontNationalIdImageUrl(reader.result)
             )
-            reader.readAsDataURL(event.target.files[0])
+            if(isImage(event.target.files[0].name) === true){
+                reader.readAsDataURL(event.target.files[0])
+            } else {
+                setFrontNationalIdImageUrl('')
+                setFrontNationalIdImageTypeNotSupported(true)
+            }            
         }
     }
     /**
@@ -83,7 +127,12 @@ const Profile = () => {
                 'load',
                 () => setBackNationalIdImageUrl(reader.result)
             )
-            reader.readAsDataURL(event.target.files[0])
+            if(isImage(event.target.files[0].name) === true){
+                reader.readAsDataURL(event.target.files[0])
+            } else {
+                setBackNationalIdImageUrl('')
+                setBackNationalIdImageTypeNotSupported(true) 
+            }
         }
     }
     /**
@@ -108,10 +157,6 @@ const Profile = () => {
     const switchWebcamStateToFalse = async () => {
         switchWebCam(false)
     }
-
-    
-    
-
 
     return (
         <div className="container card-container">
@@ -140,9 +185,9 @@ const Profile = () => {
                     <DocumentsTab steps={steps} click={selectDocType} />
                     { steps === 2 && 
                         <>
-                            <Uploader fileAction={ onSelectPassport} />
-                            {webCamOn === false &&
-                                <img id="storage" className="identificationUploadImage" src={PassportSrc} />
+                            { webCamOn === false && <Uploader fileAction={ onSelectPassport} /> }
+                            {webCamOn === false && PassportSrc !== '' &&
+                                <img id="storage" alt="jsx-a11y/alt-text" className="identificationUploadImage" src={PassportSrc} />
                             }
 
                             {webCamOn === true && 
@@ -155,9 +200,9 @@ const Profile = () => {
                                 </>
                             }
                             <br />
-                            { PassportSrc != '' &&
+                            { PassportSrc !== '' &&
                             <div className="tile is-horizontal" style={{width: 'max-content', marginLeft: '50%', transform: 'translate(-50%)'}}>
-                                {webCamPhotosUrl != '' && 
+                                {webCamPhotosUrl !== '' && 
                                     <div>
                                         <button className="button is-small is-primary" style={{
                                             width: 'min-content', marginLeft: '-2px'
@@ -189,12 +234,12 @@ const Profile = () => {
                     { steps === 3 && webCamOn === false &&
                         <div className="tile is-horizontal" style={{width: 'fit-content',transform: 'translate(-50%)',marginLeft: '51%'}}>
                             {nationalIdRequirements.map(type => {
-                                if(type.name == 'front') 
+                                if(type.name === 'front') 
                                     return (
                                         <div>
                                             <Uploader id={type.name} fileAction={ onSelectFrontId } />
-                                            {frontNationalIdImageUrl != '' &&
-                                                <img id="storage" className="identificationUploadImage" src={frontNationalIdImageUrl} />
+                                            {frontNationalIdImageUrl !== '' &&
+                                                <img id="storage" alt="jsx-a11y/alt-text" className="identificationUploadImage" src={frontNationalIdImageUrl} />
                                             }
                                         </div>
                                     )
@@ -202,8 +247,8 @@ const Profile = () => {
                                     return (
                                         <div>
                                             <Uploader id={type.name} fileAction={ onSelectbackId } />
-                                            {backNationalIdImageUrl != '' &&
-                                                <img id="storage" className="identificationUploadImage" src={backNationalIdImageUrl} />
+                                            {backNationalIdImageUrl !== '' &&
+                                                <img id="storage" alt="jsx-a11y/alt-text" className="identificationUploadImage" src={backNationalIdImageUrl} />
                                             }
                                         </div>
                                     )

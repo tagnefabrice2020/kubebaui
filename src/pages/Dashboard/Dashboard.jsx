@@ -5,8 +5,7 @@ import {Line} from 'react-chartjs-2'
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-const Dashboard = (props) => {
-    
+const Dashboard = (props) => {  
     return (
             <div className="container card-container">
                 <div className="container m-t-50">
@@ -91,8 +90,8 @@ const Dashboard = (props) => {
                                                 }
                                             }
                                         }}
-                                height={400}
-                                width={400}                                                
+                                    height={400}
+                                    width={400}                                                
                                 />
                             </div>                                                    
                         </div>                                    

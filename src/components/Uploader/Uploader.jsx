@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 
 class Uploader extends Component {
-    constructor (props) {
-        super(props)
-        state: {
-
-        }
-    }
-
     render () {
         return (
             <div className="tile is-parent is-flex-direction-column is-justify-content-center">

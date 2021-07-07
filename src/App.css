@@ -1299,3 +1299,7 @@ only screen and ( min-resolution: 2dppx) and (min-width: 700px) {
     transform: translate(-50%);
     margin-left: 50%;
 }
+
+#storage {
+    font-size: 0px;
+}
