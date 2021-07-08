@@ -1,37 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class Shippements extends Component {
-
-    render(){
-        return (
-            <div className="container card-container shippement-container">
+const Activities = () => {
+    return (
+        <div className="container card-container">
                 <div className="tile is-ancestor is-horizontal">
                     <div className="tile m-t-20 is-6 is-flex-direction-column">
                         {/* <!-- Heading --> */}
-                        <h2 className="title is-12" style={{fontSize: '30px'}}>Shippments</h2>
-                    </div>
-                    <div className="tile m-t-20 is-flex-direction-row-reverse">
-                        {/* <!-- Form search --> */}
-                        <div className="is-10">
-                                <form method="get" action="">
-                                    <p className="control has-icons-right">
-                                        <input type="text" name="search" className="input is-small is-rounded" />
-                                        <span className="icon is-small is-right">
-                                            <i className="fa fa-search"></i>
-                                        </span>
-                                    </p>
-                                </form>
-                            </div>
+                        <h2 className="sub-title is-12" style={{fontSize: '30px'}}>Shippments</h2>
                     </div>
                 </div>
                 <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
-                    <div className="tile is-parent">
-                        <div className="tile is-child">
-                            <button className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></button>
-                        </div>
-                    </div>
                     <div className="tile is-parent is-flex-direction-column overflow-x-sm">
-                        <table className="table" style={{width: '100%'}}>
+                        <table className="table">
                             <thead>
                                 <tr>
                                 <th><abbr title="Position">Pos</abbr></th>
@@ -44,7 +24,7 @@ class Shippements extends Component {
                                 <th><abbr title="Goals against">GA</abbr></th>
                                 <th><abbr title="Goal difference">GD</abbr></th>
                                 <th><abbr title="Points">Pts</abbr></th>
-                                <th>Qualification or relegation</th>
+                                <th>Qualification </th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -59,13 +39,13 @@ class Shippements extends Component {
                                 <th><abbr title="Goals against">GA</abbr></th>
                                 <th><abbr title="Goal difference">GD</abbr></th>
                                 <th><abbr title="Points">Pts</abbr></th>
-                                <th>Qualification or relegation</th>
+                                <th>Qualification </th>
                                 </tr>
                             </tfoot>
                             <tbody>
                             <tr>
                                 <th>3</th>
-                                <td>Tottenham Hotspur</td>
+                                <td>Tottenham </td>
                                 <td>38</td>
                                 <td>19</td>
                                 <td>13</td>
@@ -74,11 +54,11 @@ class Shippements extends Component {
                                 <td>35</td>
                                 <td>+34</td>
                                 <td>70</td>
-                                <td>Qualification</td>
+                                <td>Qualification </td>
                                 </tr>
                                 <tr className="is-selected">
                                 <th>4</th>
-                                <td>Manchester City</td>
+                                <td>Manchester </td>
                                 <td>38</td>
                                 <td>19</td>
                                 <td>9</td>
@@ -100,7 +80,7 @@ class Shippements extends Component {
                                 <td>35</td>
                                 <td>+14</td>
                                 <td>66</td>
-                                <td>Qualification</td>
+                                <td>Qualification </td>
                                 </tr>
                                 <tr>
                                 <th>6</th>
@@ -117,7 +97,7 @@ class Shippements extends Component {
                                 </tr>
                                 <tr>
                                 <th>7</th>
-                                <td>West Ham United</td>
+                                <td>West Ham </td>
                                 <td>38</td>
                                 <td>16</td>
                                 <td>14</td>
@@ -126,7 +106,7 @@ class Shippements extends Component {
                                 <td>51</td>
                                 <td>+14</td>
                                 <td>62</td>
-                                <td>Qualication</td>
+                                <td>Qualification</td>
                                 </tr>
                             </tbody>
                         </table>                       
@@ -134,8 +114,7 @@ class Shippements extends Component {
                 </div>
                 <br/>
             </div>
-        )
-    }
+    )
 }
 
-export default Shippements
+export default Activities

@@ -8,7 +8,6 @@
 
 #app {
     width: -webkit-fill-available;
-    width: -moz-available;
 }
 
 .h-150 {
@@ -129,6 +128,25 @@ body {
 
 .border-right {
     border-right: 1px solid rgb(187 186 186) !important;
+}
+
+@media only screen and (max-width: 824px) {
+    .profile-container {
+        padding: 5px;
+    }
+    .notification-container {
+        padding: 5px;
+    }
+    .shippement-container {
+        padding: 5px;
+    }
+    .custom-container-overflow {
+        overflow-x: auto;
+        padding: 0px;
+    }
+    .overflow-x-sm{
+        overflow-x: auto;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -309,7 +327,7 @@ body {
 
 @media only screen and (max-width: 1023px) and (min-width: 769px) {
     #app {
-        width: fit-content;
+        /*width: fit-content;*/
     }
     .search-section {
         width: 700px!important;
@@ -324,7 +342,7 @@ body {
         top: 280px !important;
     }
     #app {
-        width: fit-content;
+        /*width: fit-content;*/
     }
 }
 
@@ -673,7 +691,7 @@ span.has-error {
     }
     .side-menu {
         z-index: 1;
-        width: 50%;
+        width: 30%;
         left: -70%;
     }
     .menu-closed {
@@ -778,7 +796,7 @@ span.has-error {
     }
     .side-menu {
         z-index: 1;
-        width: 70%;
+        width: 30%;
         left: -70%;
     }
     .menu-closed {
@@ -1275,6 +1293,10 @@ only screen and ( min-resolution: 2dppx) and (min-width: 700px) {
     display: none;
 }
 
+.identificationInput {
+    color: #fff;
+}
+
 .identificationInput::before {
     font-family: "Font Awesome 5 Free";
     content: '\f382';
@@ -1292,10 +1314,19 @@ only screen and ( min-resolution: 2dppx) and (min-width: 700px) {
     font-size: 10pt;
     width: -webkit-fill-available;
     text-align: center;
+    color: #000;
 }
 
 .identificationUploadImage {
     width: 250px;
     transform: translate(-50%);
     margin-left: 50%;
+}
+
+.uploader-center {
+    max-width: 258px;
+    margin: 0 auto;
+}
+#storage {
+    font-size: 0px;
 }

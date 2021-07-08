@@ -41,40 +41,52 @@ const ProfileTab = () => {
                         <div className="field">
                             <h2 className="title">Personal Information</h2>
                         </div>
-                        <div className="field">
-                            <label className="label is-small">Legal Name</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input is-small" type="email" />
-                                <span className="icon is-small is-left">
-                                <i className="fas fa-user"></i>
-                                </span>
-                                <span className="icon is-small is-right">
-                                <i className="fas fa-check"></i>
-                                </span>
+                        <div className="columns is-multiline">
+                            <div className="column">
+                                <div className="field">
+                                    <label className="label is-small">Legal Name</label>
+                                    <div className="control has-icons-left has-icons-right">
+                                        <input className="input is-small" type="email" />
+                                        <span className="icon is-small is-left">
+                                        <i className="fas fa-user"></i>
+                                        </span>
+                                        <span className="icon is-small is-right">
+                                        <i className="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="field">
-                            <label className="label is-small">Date of Birth</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input is-small" type="date" />
-                                <span className="icon is-small is-left">
-                                <i className="fas fa-date"></i>
-                                </span>
-                                <span className="icon is-small is-right">
-                                <i className="fas fa-check"></i>
-                                </span>
+                        <div className="columns is-multiline">
+                            <div className="column">
+                                <div className="field">
+                                    <label className="label is-small">Date of Birth</label>
+                                    <div className="control has-icons-left has-icons-right">
+                                        <input className="input is-small" type="date" />
+                                        <span className="icon is-small is-left">
+                                        <i className="fas fa-date"></i>
+                                        </span>
+                                        <span className="icon is-small is-right">
+                                        <i className="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="field">
-                            <label className="label is-small">Adresse</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input is-small" type="text"/>
-                                <span className="icon is-small is-left">
-                                <i className="fas fa-address-card"></i>
-                                </span>
-                                <span className="icon is-small is-right">
-                                <i className="fas fa-check"></i>
-                                </span>
+                        <div className="columns is-multiline">
+                            <div className="column">
+                                <div className="field">
+                                    <label className="label is-small">Adresse</label>
+                                    <div className="control has-icons-left has-icons-right">
+                                        <input className="input is-small" type="text"/>
+                                        <span className="icon is-small is-left">
+                                        <i className="fas fa-address-card"></i>
+                                        </span>
+                                        <span className="icon is-small is-right">
+                                        <i className="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="columns is-multiline">
@@ -137,7 +149,7 @@ const ProfileTab = () => {
                         </p>
                         
                         <div className="panel-block is-active is-flex-direction-column">
-                            <form>
+                            <form style={{width: '100%'}}>
                             <div className="field">
                                 <label className="label">Old password</label>
                                 <div className="control">
