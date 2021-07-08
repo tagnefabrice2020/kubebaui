@@ -4,7 +4,7 @@ class Notifications extends Component {
    
     render(){
         return (
-            <div className="container card-container">
+            <div className="container card-container notification-container">
                 <div className="tile is-ancestor is-horizontal">
                     <div className="tile m-t-20 is-6 is-flex-direction-column">
                         {/* <!-- Heading --> */}
@@ -24,15 +24,14 @@ class Notifications extends Component {
                             </div>
                     </div>
                 </div>
-                <div className="tile is-ancestor is-vertical c-t-20 box">
+                <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
                     <div className="tile is-parent">
                         <div className="tile is-child">
                             <button className="button is-small is-primary" >Clear &nbsp;<i className="fas fa-eraser"></i></button>
                         </div>
                     </div>
-                    < hr />
-                    <div className="tile is-parent is-flex-direction-column">
-                        <table className="table">
+                    <div className="tile is-parent is-flex-direction-column overflow-x-sm">
+                        <table className="table" style={{width: '100%'}}>
                             <thead>
                                 <tr>
                                 <th><abbr title="Position">Pos</abbr></th>
@@ -60,13 +59,13 @@ class Notifications extends Component {
                                 <th><abbr title="Goals against">GA</abbr></th>
                                 <th><abbr title="Goal difference">GD</abbr></th>
                                 <th><abbr title="Points">Pts</abbr></th>
-                                <th>Qualification or relegation</th>
+                                <th>Qualification </th>
                                 </tr>
                             </tfoot>
                             <tbody>
                             <tr>
                                 <th>3</th>
-                                <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C." title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
+                                <td>Tottenham </td>
                                 <td>38</td>
                                 <td>19</td>
                                 <td>13</td>
@@ -75,11 +74,11 @@ class Notifications extends Component {
                                 <td>35</td>
                                 <td>+34</td>
                                 <td>70</td>
-                                <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a></td>
+                                <td>Qualification</td>
                                 </tr>
                                 <tr className="is-selected">
                                 <th>4</th>
-                                <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C." title="Manchester City F.C.">Manchester City</a></td>
+                                <td>Manchester </td>
                                 <td>38</td>
                                 <td>19</td>
                                 <td>9</td>
@@ -88,11 +87,11 @@ class Notifications extends Component {
                                 <td>41</td>
                                 <td>+30</td>
                                 <td>66</td>
-                                <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Play-off_round" title="2016–17 UEFA Champions League">Champions League play-off round</a></td>
+                                <td>Qualification</td>
                                 </tr>
                                 <tr>
                                 <th>5</th>
-                                <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C." title="Manchester United F.C.">Manchester United</a></td>
+                                <td>Manchester United</td>
                                 <td>38</td>
                                 <td>19</td>
                                 <td>9</td>
@@ -101,11 +100,11 @@ class Notifications extends Component {
                                 <td>35</td>
                                 <td>+14</td>
                                 <td>66</td>
-                                <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Group_stage" title="2016–17 UEFA Europa League">Europa League group stage</a></td>
+                                <td>Qualification </td>
                                 </tr>
                                 <tr>
                                 <th>6</th>
-                                <td><a href="https://en.wikipedia.org/wiki/Southampton_F.C." title="Southampton F.C.">Southampton</a></td>
+                                <td>Southampton</td>
                                 <td>38</td>
                                 <td>18</td>
                                 <td>9</td>
@@ -114,11 +113,11 @@ class Notifications extends Component {
                                 <td>41</td>
                                 <td>+18</td>
                                 <td>63</td>
-                                <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Group_stage" title="2016–17 UEFA Europa League">Europa League group stage</a></td>
+                                <td>Qualification </td>
                                 </tr>
                                 <tr>
                                 <th>7</th>
-                                <td><a href="https://en.wikipedia.org/wiki/West_Ham_United_F.C." title="West Ham United F.C.">West Ham United</a></td>
+                                <td>West Ham United</td>
                                 <td>38</td>
                                 <td>16</td>
                                 <td>14</td>
@@ -127,7 +126,7 @@ class Notifications extends Component {
                                 <td>51</td>
                                 <td>+14</td>
                                 <td>62</td>
-                                <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Third_qualifying_round" title="2016–17 UEFA Europa League">Europa League third qualifying round</a></td>
+                                <td>Qualification </td>
                                 </tr>
                             </tbody>
                         </table>                       

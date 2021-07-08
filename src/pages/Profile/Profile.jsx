@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Uploader from '../../components/Uploader/Uploader'
+import Activities from '../Settings/Activities'
 import DocumentsTab from '../Settings/DocumentsTab'
 import ProfileTab from '../Settings/ProfileTab'
 
@@ -159,7 +160,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="container card-container">
+        <div className="container card-container profile-container">
             <div className="tile is-ancestor is-vertical">
                 <div className="tile m-t-20 is-6 is-flex-direction-column">
                     {/* <!-- Heading --> */}
@@ -178,6 +179,10 @@ const Profile = () => {
             </div>
             { tab === 'profile' &&
                 <ProfileTab />
+            }
+
+            { tab === 'activities' &&
+                <Activities />
             }
 
             { tab === 'documents' &&
