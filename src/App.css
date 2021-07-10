@@ -1,13 +1,15 @@
 @media only screen and (min-width: 1440px) {
     #app {
-        /*max-width: 950px;*/
+        max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
+        width: 1200px;
     }
 }
 
 #app {
     width: -webkit-fill-available;
+    /* width: -moz-available; */
 }
 
 .h-150 {
@@ -16,6 +18,27 @@
 
 .add-main-content-width .main-logo-container {
     display: block;
+    margin-left: 50%;
+    transform: translate(-55%);
+    height: 35px;
+}
+
+@media only screen and (max-width: 822px) {
+    .main-logo-container {
+        display: block!important;
+        margin-left: 50%;
+        transform: translate(-30%);
+        height: 35px;
+    }
+}
+
+.custom-stat-box-padding {
+    padding: .5rem 1rem;
+}
+
+.custom-stat-box-padding > :nth-child(2) {
+    width: inherit;
+    text-align: center;
 }
 
 .main-logo-container {
@@ -61,6 +84,59 @@ body {
 	top: 10;
 	background: #000;
 	color: white;*/
+}
+
+button.accordion {
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 5px;
+    margin-top: 5px;
+    outline: none;
+    text-align: left;
+    color: #fff;
+    background: #004b88;
+    border: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .11), 
+                0 2px 2px rgba(0, 0, 0, .11), 
+                0 4px 6px rgba(0, 0, 0, 0), 
+                0 6px 8px rgba(0, 0, 0, 0), 
+                0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    max-height: 0px;
+    /* min-height: fit-content; */
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.accordion-content.is-open {
+    min-height: fit-content;
+}
+
+.panel.is-info .panel-heading {
+    background: #004b88!important;
+}
+
+.table tr.is-selected {
+    background: #004b88!important;
+}
+
+.table {
+    font: caption;
+}
+
+.table td, .table th {
+    border-color: #f2f2f2;
+    padding: 0.75em 0.75em;
+}
+
+.pagination-link.is-current{
+    background: #004b88!important; 
 }
 
 .label {
@@ -485,7 +561,7 @@ body {
 }
 
 .side-menu {
-    max-height: 100vh;
+    max-height: 100%;
     height: 100vh;
     width: 20%;
     background: #f4f2f2;
@@ -672,6 +748,7 @@ span.has-error {
     }
 }
 
+
 @media only screen and (max-width: 768px) and (min-width: 412px) {
     .login-card-content {
         padding: 0rem!important;
@@ -691,7 +768,7 @@ span.has-error {
     }
     .side-menu {
         z-index: 1;
-        width: 30%;
+        width: 46%;
         left: -70%;
     }
     .menu-closed {

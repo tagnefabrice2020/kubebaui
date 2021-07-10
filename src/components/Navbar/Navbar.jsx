@@ -2,7 +2,6 @@ import React,  { Fragment } from 'react'
 import {Link, NavLink, withRouter} from 'react-router-dom'
 
 const buttonBageStyle =  {
-    position: 'absolute',
     left: '50%',
     transform: 'translateX(8px)',
     backgroundColor:' hsl(10deg 100% 60%)',
@@ -11,7 +10,8 @@ const buttonBageStyle =  {
     fontWeight: '500',
     color: '#fff',
     padding: '1em 0.7 em',
-    borderRadius: '100vh'
+    borderRadius: '50px',
+    padding: '5px'
 }
 
 const menuListStyle = {
@@ -29,6 +29,8 @@ const Navbar = (props) => {
     const notificationsActive = props.location.pathname.match(/^\/notifications/) ? "active" : ""
     const shippmentActive = props.location.pathname.match(/^\/shippments/) ? "active" : ""
     const profileActive = props.location.pathname.match(/^\/profile/) ? "active" : ""
+    const parcelActive = props.location.pathname.match(/^\/parcels/) ? "active" : ""
+    const documentActive = props.location.pathname.match(/^\/documents/) ? "active" : ""
     
     return ( 
         <>
@@ -49,18 +51,27 @@ const Navbar = (props) => {
                          to={{
                             pathname: 'dashboard'
                         }} className={dashboardActive}><i className="fas fa-columns"></i> Dashboard</Link></li>
-                                    <li><NavLink to={{
+                        <li><Link
+                         to={{
+                            pathname: 'documents'
+                        }} className={documentActive}><i className="fas fa-file"></i> Documents</Link></li>
+                        <li><NavLink to={{
                                         pathname:'shippments',
                                     }}
                                     className={shippmentActive}
                                     ><i className="fas fa-shipping-fast"></i> Shippments </NavLink></li>
+                        <li><NavLink to={{
+                                        pathname:'parcels',
+                                    }}
+                                    className={parcelActive}
+                                    ><i className="fas fa-box"></i> Parcels </NavLink></li>
                         <li style={{position: 'relative'}}>
                             <NavLink to={{
                             pathname: 'notifications'
                         }} className={notificationsActive}>
                                 <i className="fas fa-bell"></i> Notifications 
                                 <span className="Button-badge" style={buttonBageStyle}
-                                >10</span> 
+                                >100</span> 
                             </NavLink>
                         </li>
                         <li><NavLink to={{

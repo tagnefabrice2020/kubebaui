@@ -2,8 +2,7 @@ import React from 'react'
 import {Line} from 'react-chartjs-2'
 
 
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 
 const Dashboard = (props) => {  
     return (
@@ -14,23 +13,23 @@ const Dashboard = (props) => {
 
                             <div className="tile is-one-quarter column side-padding-0 ">
                                 {/* <!-- <a> --> */}
-                                <div className="box h-150 w-100 is-flex is-flex-direction-column" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
+                                <div className="box h-150 w-100 is-flex is-flex-direction-column custom-stat-box-padding" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
                                     <div className="c-header">
                                         <h2>Total Clients <span style={{fontSize: '10px'}}>+24%</span></h2>
                                     </div>
-                                    <div><h1 className="title">5,124</h1></div>
-                                    <div><small>50 avg new users / day</small></div>
+                                    <div><h1 className="title">5K</h1></div>
+                                    <div><small>50 + users / day</small></div>
                                 </div>
                                 {/* <!-- </a> --> */}
                             </div>
                         
                             <div className="tile is-one-quarter column side-padding-0 ">
                                 {/* <!-- <a> --> */}
-                                <div className="box h-150 w-100 is-flex is-flex-direction-column" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
+                                <div className="box h-150 w-100 is-flex is-flex-direction-column custom-stat-box-padding" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
                                     <div className="c-header">
                                         <h2>Total Activities <span style={{fontSize: '10px'}}>+24%</span></h2>
                                     </div>
-                                    <div><h1 className="title">3,000</h1></div>
+                                    <div><h1 className="title">3K</h1></div>
                                     <div><small>Activities / day</small></div>
                                 </div>
                                 {/* <!-- </a> --> */}
@@ -38,12 +37,12 @@ const Dashboard = (props) => {
                             
                             <div className="tile is-one-quarter column side-padding-0 ">
                                 {/* <!-- <a> --> */}
-                                <div className="box h-150 w-100 is-flex is-flex-direction-column" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
+                                <div className="box h-150 w-100 is-flex is-flex-direction-column custom-stat-box-padding" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
                                     <div className="c-header">
                                         <h2>Total parcels <span style={{fontSize: '10px'}}>+10%</span></h2>
                                     </div>
-                                    <div><h1 className="title">15,124</h1></div>
-                                    <div><small>500 avg new parcels / day</small></div>
+                                    <div><h1 className="title">15K</h1></div>
+                                    <div><small>5H + parcels / day</small></div>
                                 </div>
                                 {/* <!-- </a> --> */}
                             </div>
@@ -51,12 +50,12 @@ const Dashboard = (props) => {
                             
                             <div className="tile is-one-quarter column side-padding-0 ">
                                 {/* <!-- <a> --> */}
-                                <div className="box h-150 w-100 is-flex is-flex-direction-column" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
+                                <div className="box h-150 w-100 is-flex is-flex-direction-column custom-stat-box-padding" style={{height: '150px',position: 'relative',alignItems: 'flex-start',justifyContent: 'space-around'}}>
                                     <div className="c-header">
                                         <h2>Total Revenue <span style={{fontSize: '10px'}}>+24%</span></h2>
                                     </div>
                                     <div><h1 className="title">$2M</h1></div>
-                                    <div><small>$5000 / day</small></div>
+                                    <div><small>$5K / day</small></div>
                                 </div>
                                 {/* <!-- </a> --> */}
                             </div>
@@ -116,11 +115,11 @@ const Dashboard = (props) => {
                         <div className="tile is-parent is-vertical contianer-height">
                             <br />
                             <div className="m-b-10 is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center">
-                                <h1 className="title" style={{display: 'contents'}}>Recent login users</h1>
+                                <h1 className="title" style={{display: 'contents', fontSize: "20px"}}>Recent login users</h1>
                                 <div className="buttons has-addons">
-                                    <button className="button is-success is-selected">Yes</button>
-                                    <button className="button">Maybe</button>
-                                    <button className="button">No</button>
+                                    <button className="button is-success is-selected is-small">Yes</button>
+                                    <button className="button is-small">Maybe</button>
+                                    <button className="button is-small">No</button>
                                 </div>
                             </div>
                             <div className="overflow-x-sm">

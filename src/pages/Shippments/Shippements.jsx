@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class Shippements extends Component {
 
@@ -27,107 +28,107 @@ class Shippements extends Component {
                 <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
                     <div className="tile is-parent">
                         <div className="tile is-child">
-                            <button className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></button>
+                            <Link to="/add_shipment" className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></Link>
                         </div>
                     </div>
                     <div className="tile is-parent is-flex-direction-column overflow-x-sm">
                         <table className="table" style={{width: '100%'}}>
                             <thead>
                                 <tr>
-                                <th><abbr title="Position">Pos</abbr></th>
-                                <th>Team</th>
-                                <th><abbr title="Played">Pld</abbr></th>
-                                <th><abbr title="Won">W</abbr></th>
-                                <th><abbr title="Drawn">D</abbr></th>
-                                <th><abbr title="Lost">L</abbr></th>
-                                <th><abbr title="Goals for">GF</abbr></th>
-                                <th><abbr title="Goals against">GA</abbr></th>
-                                <th><abbr title="Goal difference">GD</abbr></th>
-                                <th><abbr title="Points">Pts</abbr></th>
-                                <th>Qualification or relegation</th>
+                                    <th>#</th>
+                                    <th>From</th>
+                                    <th>Destination</th>
+                                    <th>Status</th>
+                                    <th>Start Date</th>
+                                    <th>Arrival date</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                <th><abbr title="Position">Pos</abbr></th>
-                                <th>Team</th>
-                                <th><abbr title="Played">Pld</abbr></th>
-                                <th><abbr title="Won">W</abbr></th>
-                                <th><abbr title="Drawn">D</abbr></th>
-                                <th><abbr title="Lost">L</abbr></th>
-                                <th><abbr title="Goals for">GF</abbr></th>
-                                <th><abbr title="Goals against">GA</abbr></th>
-                                <th><abbr title="Goal difference">GD</abbr></th>
-                                <th><abbr title="Points">Pts</abbr></th>
-                                <th>Qualification or relegation</th>
+                                    <th>#</th>
+                                    <th>From</th>
+                                    <th>Destination</th>
+                                    <th>Status</th>
+                                    <th>Start Date</th>
+                                    <th>Arrival date</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </tfoot>
                             <tbody>
                             <tr>
+                                <th>1</th>
+                                <td>New York, USA</td>
+                                <td>Bonaberi, Doauala</td>
+                                <td><span>in progress</span></td>
+                                <td>Friday 08, Jul 2021</td>
+                                <td>Saturday 09, Jul 2021</td>
+                                <td className="has-text-centered">24</td>
+                                <td><a href="button is-small">Senders</a></td>
+                                <td><a href="button is-small">Recipients</a></td>
+                                <td><span className="bg-red"><i className="fas fa-eye"></i></span></td>
+                                <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
+                            </tr>
+                            <tr className="">
+                                <th>2</th>
+                                <td>New York, USA</td>
+                                <td>Bonaberi, Doauala</td>
+                                <td><span>in progress</span></td>
+                                <td>Friday 08, Jul 2021</td>
+                                <td>Saturday 09, Jul 2021</td>
+                                <td className="has-text-centered">24</td>
+                                <td><a href="button is-small">Senders</a></td>
+                                <td><a href="button is-small">Recipients</a></td>
+                                <td><span className="bg-red"><i className="fas fa-eye"></i></span></td>
+                                <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
+                            </tr>
+                            <tr>
                                 <th>3</th>
-                                <td>Tottenham Hotspur</td>
-                                <td>38</td>
-                                <td>19</td>
-                                <td>13</td>
-                                <td>6</td>
-                                <td>69</td>
-                                <td>35</td>
-                                <td>+34</td>
-                                <td>70</td>
-                                <td>Qualification</td>
-                                </tr>
-                                <tr className="is-selected">
+                                <td>New York, USA</td>
+                                <td>Bonaberi, Doauala</td>
+                                <td><span>in progress</span></td>
+                                <td>Friday 08, Jul 2021</td>
+                                <td>Saturday 09, Jul 2021</td>
+                                <td className="has-text-centered">24</td>
+                                <td><a href="button is-small">Senders</a></td>
+                                <td><a href="button is-small">Recipients</a></td>
+                                <td><span className="bg-red"><i className="fas fa-eye"></i></span></td>
+                                <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
+                            </tr>
+                            <tr>
                                 <th>4</th>
-                                <td>Manchester City</td>
-                                <td>38</td>
-                                <td>19</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <td>71</td>
-                                <td>41</td>
-                                <td>+30</td>
-                                <td>66</td>
-                                <td>Qualification </td>
-                                </tr>
-                                <tr>
+                                <td>New York, USA</td>
+                                <td>Bonaberi, Doauala</td>
+                                <td><span>in progress</span></td>
+                                <td>Friday 08, Jul 2021</td>
+                                <td>Saturday 09, Jul 2021</td>
+                                <td className="has-text-centered">24</td>
+                                <td><a href="button is-small">Senders</a></td>
+                                <td><a href="button is-small">Recipients</a></td>
+                                <td><span className="bg-red"><i className="fas fa-eye"></i></span></td>
+                                <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
+                            </tr>
+                            <tr>
                                 <th>5</th>
-                                <td>Manchester</td>
-                                <td>38</td>
-                                <td>19</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <td>49</td>
-                                <td>35</td>
-                                <td>+14</td>
-                                <td>66</td>
-                                <td>Qualification</td>
-                                </tr>
-                                <tr>
-                                <th>6</th>
-                                <td>Southampton</td>
-                                <td>38</td>
-                                <td>18</td>
-                                <td>9</td>
-                                <td>11</td>
-                                <td>59</td>
-                                <td>41</td>
-                                <td>+18</td>
-                                <td>63</td>
-                                <td>Qualification </td>
-                                </tr>
-                                <tr>
-                                <th>7</th>
-                                <td>West Ham United</td>
-                                <td>38</td>
-                                <td>16</td>
-                                <td>14</td>
-                                <td>8</td>
-                                <td>65</td>
-                                <td>51</td>
-                                <td>+14</td>
-                                <td>62</td>
-                                <td>Qualication</td>
-                                </tr>
+                                <td>New York, USA</td>
+                                <td>Bonaberi, Doauala</td>
+                                <td><span>in progress</span></td>
+                                <td>Friday 08, Jul 2021</td>
+                                <td>Saturday 09, Jul 2021</td>
+                                <td className="has-text-centered">24</td>
+                                <td><a href="button is-small">Senders</a></td>
+                                <td><a href="button is-small">Recipients</a></td>
+                                <td><span className="bg-red"><i className="fas fa-eye"></i></span></td>
+                                <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
+                            </tr>
                             </tbody>
                         </table>                       
                     </div>
