@@ -10,6 +10,7 @@ import AddShipment from '../pages/Shippments/AddShipment'
 import Parcels from '../pages/Parcels/Parcels'
 import AddParcels from '../pages/Parcels/AddParcel'
 import Documents from '../pages/Documents/Documents'
+import Employees from '../pages/Employees/Employees'
 
 const appStyle = {
    
@@ -24,6 +25,7 @@ const BackOfficeApp = (props) => {
             {/* <div id="app" style={appStyle}> */}
                 <div className="main-content" id="main-content">
                     <BurgerBar logo={props.logo}/>
+                    <Route path="/employees" component={Employees} />
                     <Route path="/documents" component={Documents} />
                     <Route path="/add_parcels" component={AddParcels} />
                     <Route path="/parcels" component={Parcels} />

@@ -31,6 +31,7 @@ const Navbar = (props) => {
     const profileActive = props.location.pathname.match(/^\/profile/) ? "active" : ""
     const parcelActive = props.location.pathname.match(/^\/parcels/) ? "active" : ""
     const documentActive = props.location.pathname.match(/^\/documents/) ? "active" : ""
+    const userActive = props.location.pathname.match(/^\/employees/) ? "active" : ""
     
     return ( 
         <>
@@ -65,6 +66,11 @@ const Navbar = (props) => {
                                     }}
                                     className={parcelActive}
                                     ><i className="fas fa-box"></i> Parcels </NavLink></li>
+                        <li><NavLink to={{
+                                        pathname:'employees',
+                                    }}
+                                    className={userActive}
+                                    ><i className="fas fa-users"></i> Employees </NavLink></li>
                         <li style={{position: 'relative'}}>
                             <NavLink to={{
                             pathname: 'notifications'

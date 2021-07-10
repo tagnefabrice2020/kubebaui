@@ -115,14 +115,13 @@ class Parcels extends Component {
                                 <td>Lorem ipsum do...</td>
                                 <td><span><i className="fas fa-eye"></i></span></td>
                                 <td><span className="bg-red"><i className="fas fa-times"></i></span></td>
-                            </tr>
-                            
-                            </tbody>
-                        </table>                       
-                    </div>
+                            </tr> 
+                        </tbody>
+                    </table>                       
                 </div>
-                <br/>
             </div>
+            <br/>
+        </div>
         )
     }
 }

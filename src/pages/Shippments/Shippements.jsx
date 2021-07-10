@@ -14,15 +14,15 @@ class Shippements extends Component {
                     <div className="tile m-t-20 is-flex-direction-row-reverse">
                         {/* <!-- Form search --> */}
                         <div className="is-10">
-                                <form method="get" action="">
-                                    <p className="control has-icons-right">
-                                        <input type="text" name="search" className="input is-small is-rounded" />
-                                        <span className="icon is-small is-right">
-                                            <i className="fa fa-search"></i>
-                                        </span>
-                                    </p>
-                                </form>
-                            </div>
+                            <form method="get" action="">
+                                <p className="control has-icons-right">
+                                    <input type="text" name="search" className="input is-small is-rounded" />
+                                    <span className="icon is-small is-right">
+                                        <i className="fa fa-search"></i>
+                                    </span>
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
