@@ -2,16 +2,16 @@ import React from 'react'
 
 const Activities = () => {
     return (
-        <div className="container card-container">
+        <div className="container">
                 <div className="tile is-ancestor is-horizontal">
                     <div className="tile m-t-20 is-6 is-flex-direction-column">
                         {/* <!-- Heading --> */}
-                        <h2 className="sub-title is-12" style={{fontSize: '30px'}}>Shippments</h2>
+                        <h2 className="sub-title is-12" style={{fontSize: '30px'}}>Activities</h2>
                     </div>
                 </div>
                 <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
                     <div className="tile is-parent is-flex-direction-column overflow-x-sm">
-                        <table className="table">
+                        <table className="table" style={{width: "100%"}}>
                             <thead>
                                 <tr>
                                 <th><abbr title="Position">Pos</abbr></th>

@@ -3,6 +3,10 @@ import Uploader from '../../components/Uploader/Uploader'
 import Activities from '../Settings/Activities'
 import DocumentsTab from '../Settings/DocumentsTab'
 import ProfileTab from '../Settings/ProfileTab'
+import Roles from '../UserManagement/Roles/Roles'
+import Permissions from '../UserManagement/Permissions/Permissions'
+import Rates from '../Settings/Rates'
+import Branches from '../Branches/Branches'
 
 const Profile = () => {
     // test versioning
@@ -114,7 +118,7 @@ const Profile = () => {
                 setFrontNationalIdImageUrl('')
                 setFrontNationalIdImageTypeNotSupported(true)
             }            
-        }
+        }  
     }
     /**
      * set back ID image for display
@@ -173,7 +177,11 @@ const Profile = () => {
                             <li className={tab === 'profile' ? ' is-active' : ''} onClick={() => switchTab('profile')}><a>Profile</a></li>
                             <li className={tab === 'security' ? ' is-active' : ''} onClick={() => switchTab('security')}><a>Security</a></li>
                             <li className={tab === 'activities' ? ' is-active' : ''} onClick={() => switchTab('activities')}><a>Activities</a></li>
+                            <li className={tab === 'branches' ? ' is-active' : ''} onClick={() => switchTab('branches')}><a>Branches</a></li>
                             <li className={tab === 'documents' ? ' is-active' : ''} onClick={() => switchTab('documents')}><a>Documents</a></li>
+                            <li className={tab === 'roles' ? ' is-active' : ''} onClick={() => switchTab('roles')}><a>Roles</a></li>
+                            <li className={tab === 'permissions' ? ' is-active' : ''} onClick={() => switchTab('permissions')}><a>Permissions</a></li>
+                            <li className={tab === 'rates' ? ' is-active' : ''} onClick={() => switchTab('rates')}><a>Rates</a></li>
                         </ul>
                     </div>
                 </div>
@@ -263,6 +271,22 @@ const Profile = () => {
                         </div>
                     }
                 </div>
+            }
+
+            { tab === 'roles' &&
+                <Roles />
+            }
+
+            { tab === 'permissions' &&
+                <Permissions />
+            }
+
+            { tab === 'rates' &&
+                <Rates />
+            }
+
+            {   tab === 'branches' &&
+                <Branches />
             }
         </div>
         

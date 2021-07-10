@@ -7,7 +7,6 @@ const ProfileTab = () => {
                 <div className="tile is-child">
                     <div className='profile-heading'>
                         <div className='columns is-mobile is-multiline'>
-                            
                             <div className='column is-4-tablet is-10-mobile name is-flex-grow-2'>
                                 <p>
                                     <span className='title is-bold'>Paul Miller</span>
@@ -144,7 +143,7 @@ const ProfileTab = () => {
             <div className="tile is-parent custom-box">
                 <div className="tile is-child">
                     <article className="panel is-info">
-                        <p className="panel-heading">
+                        <p className="panel-heading" style={{padding: "6px 8px"}}>
                             Change Password
                         </p>
                         

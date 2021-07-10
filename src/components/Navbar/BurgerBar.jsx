@@ -35,7 +35,7 @@ const toggleMenuBuggerMobile = (event) => {
 }
 
 const logoStyle = {
-    marginLeft: '50%', transform: 'translate(-55%)', height: '35px'
+    
 }
 
 const BurgerBar = (props) => {
