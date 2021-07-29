@@ -20,6 +20,7 @@ const Countries = () => {
     useEffect(() => {
         async function fetchCountries () {
             try {
+                setLoading(true)
                 const results = await fetchApi(GET, `/countries?page=${currentPage}&per_page=${itemsPerPage}`)
                 setTotalItems(results.data.data.total)
                 setCountries(results.data.data.data)
@@ -108,6 +109,7 @@ const Countries = () => {
 
     const handleItemsPerPage = (itemPerPage) => {
         setLoading(true)
+        setCurrentPage(1)
         setItemsPerPage(itemPerPage)
     }
 
