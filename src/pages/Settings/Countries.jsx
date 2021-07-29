@@ -107,6 +107,7 @@ const Countries = () => {
     }
 
     const handleItemsPerPage = (itemPerPage) => {
+        setLoading(true)
         setItemsPerPage(itemPerPage)
     }
 
