@@ -6,26 +6,13 @@ const EditShipment = () => {
             <div className="tile is-ancestor is-horizontal">
                 <div className="tile m-t-20 is-6 is-flex-direction-column">
                     {/* <!-- Heading --> */}
-                    <h2 className="title is-12" style={{fontSize: '30px'}}>Edit Shippments</h2>
-                </div>
-                <div className="tile m-t-20 is-flex-direction-row-reverse">
-                    {/* <!-- Form search --> */}
-                    <div className="is-10">
-                        <form method="get" action="">
-                            <p className="control has-icons-right">
-                                <input type="text" name="search" className="input is-small is-rounded" />
-                                <span className="icon is-small is-right">
-                                    <i className="fa fa-search"></i>
-                                </span>
-                            </p>
-                        </form>
-                    </div>
+                    <h2 className="title is-12 page-title" style={{fontSize: '25px'}}>Edit Shippments</h2>
                 </div>
             </div>
             <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
                 <div className="tile is-parent">
                     <div className="tile is-child">
-                        <button className="button is-small is-primary" >All shippments &nbsp; <i className="fas fa-list"></i></button>
+                        <Link to="/shippments" className="button is-small is-primary" >All shippments &nbsp; <i className="fas fa-list"></i></Link>
                     </div>
                 </div>
                 <div className="tile is-parent is-flex-direction-column overflow-x-sm">

@@ -1,5 +1,6 @@
 import React,  { Fragment } from 'react'
 import {Link, NavLink, withRouter} from 'react-router-dom'
+import { logoutAction } from '../../Actions/Controllers/AuthContoller/AuthController'
 
 const buttonBageStyle =  {
     left: '50%',
@@ -10,8 +11,7 @@ const buttonBageStyle =  {
     fontWeight: '500',
     color: '#fff',
     padding: '1em 0.7 em',
-    borderRadius: '50px',
-    padding: '5px'
+    borderRadius: '50px'
 }
 
 const menuListStyle = {
@@ -24,7 +24,6 @@ const logoStyle = {
 }
 
 const Navbar = (props) => {
-   
     const dashboardActive = props.location.pathname.match(/^\/dashboard/) ? "active" : ""
     const notificationsActive = props.location.pathname.match(/^\/notifications/) ? "active" : ""
     const shippmentActive = props.location.pathname.match(/^\/shippments/) ? "active" : ""
@@ -32,6 +31,11 @@ const Navbar = (props) => {
     const parcelActive = props.location.pathname.match(/^\/parcels/) ? "active" : ""
     const documentActive = props.location.pathname.match(/^\/documents/) ? "active" : ""
     const userActive = props.location.pathname.match(/^\/employees/) ? "active" : ""
+
+    const handleLogout = () => {
+        logoutAction()
+        props.onLogout(false) // set isAuthenticated to false
+    }
     
     return ( 
         <>
@@ -41,7 +45,7 @@ const Navbar = (props) => {
                         <ul className="menu-list">
                             <li>
                                 <Link to="/">
-                                    <img  alt="jsx-a11y/alt-text"  src={props.logo} style={logoStyle} />
+                                    <img  alt="logo-side-bar"  src={props.logo} style={logoStyle} />
                                 </Link>
                             </li>
                         </ul>
@@ -50,11 +54,11 @@ const Navbar = (props) => {
                     <ul className="menu-list" style={menuListStyle}>
                         <li><Link
                          to={{
-                            pathname: 'dashboard'
+                            pathname: '/dashboard'
                         }} className={dashboardActive}><i className="fas fa-columns"></i> Dashboard</Link></li>
                         <li><Link
                          to={{
-                            pathname: 'documents'
+                            pathname: '/documents'
                         }} className={documentActive}><i className="fas fa-file"></i> Documents</Link></li>
                         <li><NavLink to={{
                                         pathname:'shippments',
@@ -62,18 +66,18 @@ const Navbar = (props) => {
                                     className={shippmentActive}
                                     ><i className="fas fa-shipping-fast"></i> Shippments </NavLink></li>
                         <li><NavLink to={{
-                                        pathname:'parcels',
+                                        pathname:'/parcels',
                                     }}
                                     className={parcelActive}
                                     ><i className="fas fa-box"></i> Parcels </NavLink></li>
                         <li><NavLink to={{
-                                        pathname:'employees',
+                                        pathname:'/employees',
                                     }}
                                     className={userActive}
                                     ><i className="fas fa-users"></i> Employees </NavLink></li>
                         <li style={{position: 'relative'}}>
                             <NavLink to={{
-                            pathname: 'notifications'
+                            pathname: '/notifications'
                         }} className={notificationsActive}>
                                 <i className="fas fa-bell"></i> Notifications 
                                 <span className="Button-badge" style={buttonBageStyle}
@@ -81,15 +85,13 @@ const Navbar = (props) => {
                             </NavLink>
                         </li>
                         <li><NavLink to={{
-                            pathname: 'profile'
+                            pathname: '/profile'
                             }}
                             className={profileActive}
                         ><i className="fas fa-user-cog"></i> Settings </NavLink></li>
-                        <li><Link to={{
-                            pathname: 'logout'
-                        }} className="navbar-item">
+                        <li><button className="navbar-item button" onClick={handleLogout}>
                                 <i className="fas fa-sign-out-alt m-r-5"></i> Logout
-                            </Link>
+                            </button>
                         </li>
                     </ul>
                 </aside>				
@@ -97,5 +99,7 @@ const Navbar = (props) => {
         </>
     )
 }
+
+
 
 export default withRouter(Navbar)
