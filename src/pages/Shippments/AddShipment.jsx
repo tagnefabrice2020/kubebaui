@@ -1,9 +1,54 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import Navbar from '../../components/Navbar/Navbar'
 import BurgerBar from '../../components/Navbar/BurgerBar'
+import { fetchApi, GET, POST} from '../../requests'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import TableLoader from "../../Loaders/TableLoader"
 
 const AddShipment = (props) => {
+
+    const [branches, setBranches] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        async function fetchBranches () {
+            setLoading(true)
+            try {
+                const results = await fetchApi(GET, "/getBranches")
+                setBranches(results.data.data)
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
+            }
+        }
+        fetchBranches()
+    }, [])
+
+    const {register, formState, handleSubmit} = useForm({
+        mode: "unTouched"
+    })
+
+    const {errors, isSubmitting} = formState
+
+    const onSubmit = async (formData) =>{
+        try {
+            const results = await fetchApi(POST, "/shipment/store", formData)
+            toast.success("Succesfully added a new shipment")
+        } catch (error) {
+            if(!error.response) {
+                toast.error('Ooops, check your internet connection!')
+            } else if (error.response.status === 500) {
+                toast.error(error.response.message)
+            } else if(error.response.status === 422) {
+                 
+            }
+        }
+    }
+
     return (
         <div style={{display: 'flex'}}>	
             <Navbar logo={ props.logo } onLogout={props.onLogout} isAuthenticated={props.isAuthenticated} />
@@ -24,37 +69,34 @@ const AddShipment = (props) => {
                         </div>
                         <div className="tile is-parent is-flex-direction-column overflow-x-sm">
                             <div className="panel-block is-active is-flex-direction-column">
-                                <form style={{width: '100%'}}>
-                                    <div className="field">
-                                        <label className="label">Name</label>
-                                        <div className="control has-icons-right">
-                                            <input 
-                                                className={`input is-success is-small`} type="text" />
-                                            
-                                        </div>
-                                        <p className="help is-danger"></p>
-                                    </div>
+                                {loading && <TableLoader />}
+                                {!loading && <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%'}}>
                                     <div className="field">
                                         <label className="label">Destination</label>
                                         <div className="control">
-                                            <div className="select is-fullwidth is-small">
-                                                <select name="branch_id"
-                                                    
+                                            <div className={`select ${errors.to && "is-danger"} is-small is-fullwidth`}>
+                                                <select name="to" defaultValue={branches > 0 ? branches[0].id : null}
+                                                    {...register('to', {
+                                                        required: "required"
+                                                    })}
                                                 >
-                                                    <option value="active">active</option>
-                                                    <option value="inactive">Inactive</option>
+                                                    <option disabled defaultValue>select your destination</option>
+                                                    {branches.map((branch) => {
+                                                        return (
+                                                            <option key={branch.id} value={branch.id} >{branch.city_branch_name}</option>
+                                                        )
+                                                    })}
                                                 </select>
                                             </div>
                                         </div>
-                                        <p className="help is-danger">This required</p>
                                     </div>
 
                                     <div className="field">
                                         <label className="label">Status</label>
                                         <div className="control">
                                             <div className="select is-fullwidth is-small">
-                                                <select name="branch_id"
-                                                    
+                                                <select name="status"
+                                                    {...register('status')}
                                                 >
                                                     <option value="parking">parking</option>
                                                     <option value="arrived">arrived</option>
@@ -62,15 +104,14 @@ const AddShipment = (props) => {
                                                 </select>
                                             </div>
                                         </div>
-                                        <p className="help is-danger">This required</p>
                                     </div>
                                     <div className="field is-grouped">
                                         <div className="control">
-                                            <button className="button is-primary is-small is-fullwidth"><i className="fas fa-save"></i></button>
+                                            <button className="button is-primary is-small is-fullwidth" disabled={isSubmitting}><i className="fas fa-save"></i></button>
                                         </div>
                                     </div>
                                     {/* https://codesandbox.io/s/vmvjl2q023 */}
-                                </form>
+                                </form> }
                             </div>
                         
                         </div>

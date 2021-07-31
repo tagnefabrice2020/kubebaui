@@ -32,10 +32,12 @@ const EditPermission = (props) => {
                        props.history.push("/notFound")
                     }
                 }
+            } else {
+                props.history.push("/notFound")
             }
         }
         getPermission()
-    })
+    }, [props.match.params])
 
     const onSubmit = async (formData) => {
         try {

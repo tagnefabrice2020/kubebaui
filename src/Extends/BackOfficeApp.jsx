@@ -2,6 +2,9 @@ import React from 'react'
 import Dashboard from '../pages/Dashboard/Dashboard'
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import Shippements from '../pages/Shippments/Shippements'
+import ShowShipment from '../pages/Shippments/ShowShipment'
+import IncomingShipment from '../pages/Shippments/IncommingShipments'
+import ShowIncomingShipment from '../pages/Shippments/ShowIncomingShipments'
 import Notifications from '../pages/Notifications/Notifications'
 import Profile from '../pages/Profile/Profile'
 import AddShipment from '../pages/Shippments/AddShipment'
@@ -16,6 +19,7 @@ import EditRole from '../pages/UserManagement/Roles/editRoles'
 import NotFound from '../pages/NotFound/NotFound'
 import LostInternetConnection from '../modal/lostInternetConnection'
 import ShowEmployee from '../pages/Employees/showEmployees'
+import EditShipment from '../pages/Shippments/EditShipment'
 
 const BackOfficeApp = (props) => {
     
@@ -28,6 +32,42 @@ const BackOfficeApp = (props) => {
 <>
         <LostInternetConnection />
        <Switch>
+            <Route exact strict path="/show_incomming_shipments/:id" render={(props) => {
+                return isAuth ? <ShowIncomingShipment 
+                    {...props}
+                    logo={imageUrl}
+                    onLogout={onLogout} 
+                    isAuthenticated={props.isAuthenticated}
+                />: <Redirect to="/login" />
+            }}/>
+
+            <Route exact strict path="/incomming_shipments" render={(props) => {
+                return isAuth ? <IncomingShipment 
+                    {...props}
+                    logo={imageUrl}
+                    onLogout={onLogout} 
+                    isAuthenticated={props.isAuthenticated}
+                />: <Redirect to="/login" />
+            }}/>
+
+            <Route exact strict path="/edit_shipments/:id" render={(props) => {
+                return isAuth ? <EditShipment 
+                    {...props}
+                    logo={imageUrl}
+                    onLogout={onLogout} 
+                    isAuthenticated={props.isAuthenticated}
+                />: <Redirect to="/login" />
+            }}/>
+
+            <Route exact strict path="/show_shipments/:id" render={(props) => {
+                return isAuth ? <ShowShipment 
+                    {...props}
+                    logo={imageUrl}
+                    onLogout={onLogout} 
+                    isAuthenticated={props.isAuthenticated}
+                />: <Redirect to="/login" />
+            }}/>
+
             <Route exact strict path="/show_employee/:id" render={(props) => {
                 return isAuth ? <ShowEmployee 
                     {...props}

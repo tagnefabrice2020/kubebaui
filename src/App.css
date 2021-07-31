@@ -1355,6 +1355,12 @@ HTML>BODY>DIV>DIV.main-content>DIV.container.card-container>DIV.container.m-t-20
     bottom: 100px!important;
 }
 
+.is-secondary {
+    background: #004b88!important;
+    color: #fff!important;
+    border-color: #004b88!important;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 700px),
 only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: 700px),
 only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: 700px),

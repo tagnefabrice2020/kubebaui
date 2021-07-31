@@ -57,6 +57,8 @@ const EditRole = (props) => {
                         toast.error('Ooops, check your internet connection!')
                     }
                 }
+            } else {
+                props.history.push("/notFound")
             }
         }
         getAllPermission()

@@ -42,7 +42,6 @@ const Permissions = () => {
                 } else if (error.response.status === 500) {
                     toast.error(error.response.message)
                 }
-                console.log(error)
             }
         }
         fetchPermissions() 
@@ -55,6 +54,8 @@ const Permissions = () => {
     }
 
     const handleItemsPerPage = (itemPerPage) => {
+        setLoading(true)
+        setCurrentPage(1)
         setItemsPerPage(itemPerPage)
     }
 

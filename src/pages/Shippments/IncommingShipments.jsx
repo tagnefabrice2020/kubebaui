@@ -6,7 +6,7 @@ import { fetchApi, GET} from '../../requests'
 import Pagination from '../../components/Pagination/Pagination'
 import TableLoader from '../../Loaders/TableLoader'
 
-const Shippements = (props) => {
+const IncommingShippements = (props) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [shipments, setShipments] = useState([])
     const [totalItems, setTotalItems] = useState()
@@ -19,7 +19,7 @@ const Shippements = (props) => {
         async function getShipments (){
             try {
                 setLoading(true)
-                const results = await fetchApi(GET, `/shipment?page=${currentPage}&per_page=${itemsPerPage}`)
+                const results = await fetchApi(GET, `/shipment/inComingShipment?page=${currentPage}&per_page=${itemsPerPage}`)
                 setTotalItems(results.data.data.total)
                 setShipments(results.data.data.data)
                 setInitialShipments(results.data.data.data)
@@ -53,7 +53,7 @@ const Shippements = (props) => {
                     <div className="tile is-ancestor is-horizontal">
                         <div className="tile m-t-20 is-6 is-flex-direction-column">
                             {/* <!-- Heading --> */}
-                            <h2 className="title is-12" style={{fontSize: '30px'}}>Shippments</h2>
+                            <h2 className="title is-12" style={{fontSize: '20px'}}>Incoming shippments</h2>
                         </div>
                         <div className="tile m-t-20 is-flex-direction-row-reverse">
                             {/* <!-- Form search --> */}
@@ -70,12 +70,9 @@ const Shippements = (props) => {
                         </div>
                     </div>
                     <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
-                        <div className="tile is-parent is-flex-direction-row is-justify-content-space-between">
+                        <div className="tile is-parent">
                             <div className="tile is-child">
                                 <Link to="/add_shipment" className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></Link>
-                            </div>
-                            <div className="tile is-child is-3">
-                                <Link to="/incomming_shipments" className="button is-small is-secondary" >Incoming shippments &nbsp; </Link>
                             </div>
                         </div>
                         <div className="tile is-parent is-flex-direction-column overflow-x-sm">
@@ -90,6 +87,7 @@ const Shippements = (props) => {
                                         <th>Start Date</th>
                                         <th>Arrival date</th>
                                         <th>Quantity</th>
+                                        <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -107,9 +105,9 @@ const Shippements = (props) => {
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    {shipments.map(shipment => 
+                                    {shipments.map((shipment, index) => 
                                         <tr key={shipment.id}>
-                                            <th>{shipment.id}</th>
+                                            <th>{index + 1}</th>
                                             <td>{shipment.from}</td>
                                             <td>{shipment.destination}</td>
                                             <td><span>{shipment.status}</span></td>
@@ -117,7 +115,7 @@ const Shippements = (props) => {
                                             <td>{shipment.arrival_date !== null ? new Date(shipment.arrival_date).toLocaleDateString("en-US"): 'stll to update'}</td>
                                             <td className="has-text-centered">{shipment.total_parcels}</td>
                                             <td><Link to={`/edit_shipments/${shipment.id}`}><i className="fas fa-pencil-alt" style={{color: "#004a88", cursor: "pointer"}}></i></Link></td>
-                                            <td><Link to={`/show_shipments/${shipment.id}`}><i className="fas fa-eye" style={{color: "#004a88", cursor: "pointer"}}></i></Link></td>
+                                            <td><Link to={`/show_incomming_shipments/${shipment.id}`}><i className="fas fa-eye" style={{color: "#004a88", cursor: "pointer"}}></i></Link></td>
                                         </tr>
                                         )}
                                 </tbody>
@@ -133,4 +131,4 @@ const Shippements = (props) => {
     )
 }
 
-export default Shippements
+export default IncommingShippements

@@ -61,7 +61,7 @@ const Navbar = (props) => {
                             pathname: '/documents'
                         }} className={documentActive}><i className="fas fa-file"></i> Documents</Link></li>
                         <li><NavLink to={{
-                                        pathname:'shippments',
+                                        pathname:'/shippments',
                                     }}
                                     className={shippmentActive}
                                     ><i className="fas fa-shipping-fast"></i> Shippments </NavLink></li>

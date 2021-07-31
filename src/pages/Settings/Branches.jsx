@@ -65,6 +65,8 @@ const Branches = () => {
     }
 
     const handleItemsPerPage = (itemPerPage) => {
+        setLoading(true)
+        setCurrentPage(1)
         setItemsPerPage(itemPerPage)
     }
 
