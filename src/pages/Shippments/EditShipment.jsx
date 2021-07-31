@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import BurgerBar from '../../components/Navbar/BurgerBar'
 import { fetchApi, GET, PATCH} from '../../requests'
@@ -11,7 +10,7 @@ const EditShipment = (props) => {
     const [branches, setBranches] = useState([])
     const [shipment, setShipment] = useState({})
     const [loading, setLoading] = useState(false)
-    const [today, setToday] = useState(new Date().toISOString().split('T')[0])
+    const today = (new Date().toISOString().split('T')[0])
 
     const {register, handleSubmit, formState} = useForm({
         mode: 'onTouched'
@@ -39,7 +38,7 @@ const EditShipment = (props) => {
             }
         }
         getShipment()
-    }, [])
+    }, [props.match.params, props.history])
 
     useEffect(() => {
         async function fetchBranches () {

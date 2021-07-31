@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import BurgerBar from '../../components/Navbar/BurgerBar'
 import { fetchApi, GET, PATCH} from '../../requests'
@@ -12,13 +11,8 @@ const Shippements = (props) => {
     const [shipment, setShipment] = useState([])
     const [parcels, setParcels] = useState([])
     const [parcelsBranch, setParcelsBranches] = useState([])
-    const [initialParcels, setInitialParcels] = useState([])
     const [totalItems, setTotalItems] = useState()
-    const [itemsPerPage, setItemsPerPage] = useState(5)
     const [loading, setLoading] = useState(false)
-    const [initialShipments, setInitialShipments] = useState([])
-    const [initialTotalItems, setInitialTotalItems] = useState()
-
     const {register, handleSubmit, formState} = useForm({
         mode: "onTouched"
     })
@@ -33,7 +27,7 @@ const Shippements = (props) => {
                     const results = await fetchApi(GET, `/shipment/${props.match.params.id}/show`)
                     setShipment(results.data.data)
                     setParcels(results.data.data.parcels)
-                    setInitialParcels(results.data.data.parcels)
+                    setTotalItems(results.data.data.parcels.length)
                     setLoading(false)
                 } catch (error) {
                     setLoading(false)
@@ -48,7 +42,7 @@ const Shippements = (props) => {
             }
         }
         getShipment()
-    },[currentPage, itemsPerPage])
+    },[currentPage, props.match.params, props.history])
 
     useEffect(() => {
         async function getParcelsBranch () {
@@ -66,18 +60,12 @@ const Shippements = (props) => {
             }
         }
         getParcelsBranch()
-    },[])
+    }, [props.match.params, props.history])
 
     const checkBoxStatus = (parcel_id) => {
         return parcels.some(p => 
             p.id === parcel_id
         )
-    }
-
-    const handlePageChange = (page) => {
-        setParcels([])
-        setLoading(true)
-        setCurrentPage(page)
     }
 
     const onSubmitAddParcels = handleSubmit(async(data) => {
@@ -121,17 +109,20 @@ const Shippements = (props) => {
                 <BurgerBar logo={props.logo}/>
                 <div className="container card-container shippement-container">
                     <div className="tile is-ancestor is-horizontal">
-                        <div className="tile m-t-20 is-6 is-flex-direction-column">
+                        <div className="tile m-t-20 is-6 is-flex-direction-row is-justify-content-space-between">
                             {/* <!-- Heading --> */}
                             <h2 className="title is-12" style={{fontSize: '20px'}}>Shipment <small>{shipment.name}</small></h2>
                         </div>
                     </div>
                     <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
                         <form>
-                        <div className="tile is-parent">
+                        <div className="tile is-parent is-horizontal">
                             <div className="tile is-child">
                                 <button onClick={onSubmitAddParcels} disabled={isSubmitting} className="button is-small is-primary" > Add parcel(s)&nbsp; </button>
-                                <button onClick={onSubmitRemoveParcels} disabled={isSubmitting} className="button is-small is-warning" > remove parcel(s)&nbsp; </button>
+                                &nbsp;<button onClick={onSubmitRemoveParcels} disabled={isSubmitting} className="button is-small is-warning" > remove parcel(s)&nbsp; </button>
+                            </div>
+                            <div className="tile is-child">
+                                <h4 className="" style={{fontSize: '20px', textAlign: 'right'}}>Total: {totalItems}</h4>
                             </div>
                         </div>
                         <div className="tile is-parent is-flex-direction-column overflow-x-sm">

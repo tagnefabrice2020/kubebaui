@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import BurgerBar from '../../components/Navbar/BurgerBar'
 import { fetchApi, GET, PATCH} from '../../requests'
@@ -9,9 +8,8 @@ import { useForm } from 'react-hook-form'
 
 const ShowIncomingShippements = (props) => {
     const [currentPage, setCurrentPage] = useState(0)
-    const [shipment, setShipment] = useState({})
     const [parcels, setParcels] = useState([])
-    const [itemsPerPage, setItemsPerPage] = useState(5)
+    const [shipment_name, setShipmentName] = useState()
     const [loading, setLoading] = useState(false)
 
     const {register, handleSubmit, formState} = useForm({
@@ -28,8 +26,8 @@ const ShowIncomingShippements = (props) => {
                     const results = await fetchApi(GET, `/shipment/${props.match.params.id}/showIncomingShipment`)
                     //setShipment(results.data.data)
                     setParcels(results.data.data)
+                    setShipmentName(results.data.data[0].shipment_name)
                     //setInitialParcels(results.data.data)
-                    console.log(results.data.data)
                     setLoading(false) 
                 } catch (error) {
                     setLoading(false)
@@ -44,19 +42,13 @@ const ShowIncomingShippements = (props) => {
             }
         }
         getShipment()
-    },[currentPage, itemsPerPage])
+    },[currentPage, props.match.params, props.history])
 
-    const checkBoxStatus = (parcel_id) => {
-        return parcels.some(p => 
-            p.id === parcel_id
-        )
-    }
-
-    const handlePageChange = (page) => {
-        setParcels([])
-        setLoading(true)
-        setCurrentPage(page)
-    }
+    // const checkBoxStatus = (parcel_id) => {
+    //     return parcels.some(p => 
+    //         p.id === parcel_id
+    //     )
+    // }
 
     const onSubmitNotifyOwner = handleSubmit(async(data) => {
         try {
@@ -84,7 +76,7 @@ const ShowIncomingShippements = (props) => {
                     <div className="tile is-ancestor is-horizontal">
                         <div className="tile m-t-20 is-6 is-flex-direction-column">
                             {/* <!-- Heading --> */}
-                            <h2 className="title is-12" style={{fontSize: '20px'}}>Shipment <small>{shipment.name}</small></h2>
+                            <h2 className="title is-12" style={{fontSize: '20px'}}>Shipment <small>{shipment_name}</small></h2>
                         </div>
                     </div>
                     <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">

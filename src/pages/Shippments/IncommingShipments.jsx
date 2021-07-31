@@ -12,6 +12,8 @@ const IncommingShippements = (props) => {
     const [totalItems, setTotalItems] = useState()
     const [itemsPerPage, setItemsPerPage] = useState(5)
     const [loading, setLoading] = useState(false)
+    const [search, setSearch] = useState("")
+    const [searchLoading, setLoadingSearch] = useState(false)
     const [initialShipments, setInitialShipments] = useState([])
     const [initialTotalItems, setInitialTotalItems] = useState()
 
@@ -31,6 +33,28 @@ const IncommingShippements = (props) => {
         }
         getShipments()
     },[currentPage, itemsPerPage])
+
+    const handleSearch = async (event) => {
+        const value = event.currentTarget.value
+        setSearch(value)
+        if (value.length >= 3) { 
+            setLoading(true)
+            setLoadingSearch(true)
+            try {
+                const results = await fetchApi(GET, `/shipment/inComing/${value}`)
+                setTotalItems(results.data.data.total)
+                setShipments(results.data.data.data)
+                setLoading(false)
+                setLoadingSearch(false)
+            } catch (error) {
+                setLoading(false)
+                setLoadingSearch(false)
+            } 
+        } else if (value.length === 0) {
+            setShipments(initialShipments)   
+            setTotalItems(initialTotalItems) 
+        }
+    }
 
     const handleItemsPerPage = (itemPerPage) => {
         setLoading(true)
@@ -59,10 +83,10 @@ const IncommingShippements = (props) => {
                             {/* <!-- Form search --> */}
                             <div className="is-10">
                                 <form method="get" action="">
-                                    <p className="control has-icons-right custom-search-form-padding">
-                                        <input type="text" name="search" className="input is-small is-rounded" />
+                                    <p className={`control has-icons-right ${searchLoading === true && 'is-loading'}`}>
+                                        <input type="text" name="search" className="input is-small is-rounded" value={search} onChange={(event) => handleSearch(event)}  />
                                         <span className="icon is-small is-right">
-                                            <i className="fa fa-search"></i>
+                                            {searchLoading === false && <i className="fas fa-search"></i>}
                                         </span>
                                     </p>
                                 </form>

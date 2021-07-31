@@ -36,7 +36,7 @@ const AddShipment = (props) => {
 
     const onSubmit = async (formData) =>{
         try {
-            const results = await fetchApi(POST, "/shipment/store", formData)
+            await fetchApi(POST, "/shipment/store", formData)
             toast.success("Succesfully added a new shipment")
         } catch (error) {
             if(!error.response) {

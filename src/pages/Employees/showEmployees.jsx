@@ -132,7 +132,7 @@ const ShowEmployee = (props) => {
                         </div>
                     </div>
                     <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
-                        <div className="tile is-ancestor is-horizontal m-t-10">
+                        <div className="is-horizontal m-t-10">
                             <div className="tile is-parent is-flex-grow-2 is-vertical custom-box">
                                 <div className="tile is-child">
                                     <div className='profile-heading'>
@@ -182,9 +182,7 @@ const ShowEmployee = (props) => {
                                                 <div className="field">
                                                     <label className="label is-small">Date of Birth</label>
                                                     <div className="control has-icons-left has-icons-right">
-                                                        <input className="input is-small" type="date" {...register("date_of_birth", {
-                                                            required: "Status is required"
-                                                        })} defaultValue={employee.date_of_birth ? employee.date_of_birth : null} disabled={employee.identity_verified === 1 ? true:false}/>
+                                                        <input className="input is-small" type="date" {...register("date_of_birth")} defaultValue={employee.date_of_birth ? employee.date_of_birth : null} disabled={employee.identity_verified === 1 ? true:false}/>
                                                         <span className="icon is-small is-left">
                                                             <i className="fas fa-calendar-day"></i>
                                                         </span>
@@ -253,7 +251,7 @@ const ShowEmployee = (props) => {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div className="tile is-parent is-flex-direction-column overflow-x-sm">
+                                            <div className="tile is-parent is-flex-direction-column overflow-x-auto overflow-x-sm">
                                                 {activityLoading && <TableLoader />} 
                                                 {!activityLoading && <table className="table" style={{width: "100%"}}>
                                                     <thead> 

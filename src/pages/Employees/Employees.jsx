@@ -32,6 +32,7 @@ const Employees = (props) => {
             setLoading(true)
             try {
                 const results = await fetchApi(GET, "/employees")
+                console.log(results)
                 setEmployees(results.data.data.data)
                 setTotalItems(results.data.data.total)
                 setInitialEmployees(results.data.data.data)

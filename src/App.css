@@ -1355,6 +1355,10 @@ HTML>BODY>DIV>DIV.main-content>DIV.container.card-container>DIV.container.m-t-20
     bottom: 100px!important;
 }
 
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
 .is-secondary {
     background: #004b88!important;
     color: #fff!important;

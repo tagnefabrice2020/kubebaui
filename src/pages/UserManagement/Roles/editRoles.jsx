@@ -44,7 +44,7 @@ const EditRole = (props) => {
             }
         }
         getRole()
-    })
+    }, [props.history, props.match.params])
 
     useEffect(() => {
         async function getAllPermission () {
@@ -62,7 +62,7 @@ const EditRole = (props) => {
             }
         }
         getAllPermission()
-    })
+    },[props.history, props.match.params])
 
     const onSubmit = async (formData) => {
         try {
@@ -78,7 +78,6 @@ const EditRole = (props) => {
 
     const onSubmitPermission = async (formData) => {
         try {
-            // setPostLoading(true)
             await fetchApi(PATCH, `/roles/update/${props.match.params.id}`, formData)
             toast.success('Succesfully updated')
         } catch (error) {

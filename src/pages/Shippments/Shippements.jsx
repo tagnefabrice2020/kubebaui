@@ -6,6 +6,7 @@ import { fetchApi, GET} from '../../requests'
 import Pagination from '../../components/Pagination/Pagination'
 import TableLoader from '../../Loaders/TableLoader'
 
+
 const Shippements = (props) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [shipments, setShipments] = useState([])
@@ -14,6 +15,8 @@ const Shippements = (props) => {
     const [loading, setLoading] = useState(false)
     const [initialShipments, setInitialShipments] = useState([])
     const [initialTotalItems, setInitialTotalItems] = useState()
+    const [search, setSearch] = useState("")
+    const [searchLoading, setLoadingSearch] = useState(false)
 
     useEffect(() => {
         async function getShipments (){
@@ -31,6 +34,27 @@ const Shippements = (props) => {
         }
         getShipments()
     },[currentPage, itemsPerPage])
+
+    const handleSearch = async (event) => {
+        const value = event.currentTarget.value
+        setSearch(value)
+        if (value.length >= 3) { 
+            setLoading(true)
+            setLoadingSearch(true)
+            try {
+                const results = await fetchApi(GET, `/shipments/${value}`)
+                setTotalItems(results.data.data.total)
+                setShipments(results.data.data.data)
+                setLoading(false)
+                setLoadingSearch(false)
+            } catch (error) {
+                setLoadingSearch(false)
+            } 
+        } else if (value.length === 0) {
+            setShipments(initialShipments)   
+            setTotalItems(initialTotalItems) 
+        }
+    }
 
     const handleItemsPerPage = (itemPerPage) => {
         setLoading(true)
@@ -59,10 +83,10 @@ const Shippements = (props) => {
                             {/* <!-- Form search --> */}
                             <div className="is-10">
                                 <form method="get" action="">
-                                    <p className="control has-icons-right custom-search-form-padding">
-                                        <input type="text" name="search" className="input is-small is-rounded" />
+                                    <p className={`control has-icons-right ${searchLoading === true && 'is-loading'}`}>
+                                        <input type="text" name="search" className="input is-small is-rounded" value={search} onChange={(event) => handleSearch(event)}  />
                                         <span className="icon is-small is-right">
-                                            <i className="fa fa-search"></i>
+                                            {searchLoading === false && <i className="fas fa-search"></i>}
                                         </span>
                                     </p>
                                 </form>
@@ -73,9 +97,18 @@ const Shippements = (props) => {
                         <div className="tile is-parent is-flex-direction-row is-justify-content-space-between">
                             <div className="tile is-child">
                                 <Link to="/add_shipment" className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></Link>
+                                &nbsp;<Link to="/incomming_shipments" className="button is-small is-secondary" >Incoming shippments &nbsp; </Link>
                             </div>
-                            <div className="tile is-child is-3">
-                                <Link to="/incomming_shipments" className="button is-small is-secondary" >Incoming shippments &nbsp; </Link>
+                            <div className="tile is-child is-flex-direction-row is-justify-content-space-between" style={{position: 'relative'}}>
+                                <div className="control" style={{position: 'absolute', right: '0px'}}>
+                                    <div className="select is-small">
+                                        <select onChange={(event) => handleItemsPerPage(event.target.value)} defaultValue={5}>
+                                            <option value={5}>5</option>
+                                            <option value={10}>10</option>
+                                            <option value={15}>15</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="tile is-parent is-flex-direction-column overflow-x-sm">

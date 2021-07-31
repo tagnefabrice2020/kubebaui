@@ -37,7 +37,7 @@ const EditPermission = (props) => {
             }
         }
         getPermission()
-    }, [props.match.params])
+    }, [props.match.params, props.history])
 
     const onSubmit = async (formData) => {
         try {
