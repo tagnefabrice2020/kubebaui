@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
-import FormLoader from "../../Loaders/FormLoader"
+import Loader from "../../Loaders/FormLoader"
 import { fetchApi, GET, POST } from "../../requests"
 import { AddPassportTokenToLocaleStorage, setAxiosToken, setUserInfo } from "../../settings"
  
@@ -71,7 +71,7 @@ const Login = (props) => {
                     </div>
                     <div className="card-body">
                         {/* {console.log(formik)} */}
-                            {isAuthChecking === true && <FormLoader />}
+                            {isAuthChecking === true && <Loader />}
                             {loginErrorMessage === "Network Error" && isAuthChecking === false &&
                                 <span style={errorSpanStyle}>Please check your internet <span><i className="fas fa-times"></i></span></span>
                             }

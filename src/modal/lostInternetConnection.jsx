@@ -1,19 +1,13 @@
 import React from 'react'
+import Loader from '../Loaders/Loader'
 
 const LostInternetConnection = () => {
     return (
-        <div className="modal">
-            <div className="modal-background"></div>
-                <div className="modal-card">
-                    <header className="modal-card-head">
-                        <p className="modal-card-title">Connection status</p>
-                        <button className="delete" aria-label="close"></button>
-                    </header>
-                <section className="modal-card-body">
-                    <p>Please check your internet connection. It seems you are disconnected!</p>
-                </section>
+        <div className="page-loader">
+            <div className="page-loader-container">
+                <Loader />
+            </div>
         </div>
-    </div>
     )
 }
 

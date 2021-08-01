@@ -1,13 +1,33 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Line} from 'react-chartjs-2'
 import Navbar from '../../components/Navbar/Navbar'
 import BurgerBar from '../../components/Navbar/BurgerBar'
+import LostInternetConnection from '../../modal/lostInternetConnection'
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 
 const Dashboard = (props) => {  
     console.log(props)
+
+    useEffect(() => {
+        var unmounted = false
+        async function getRole () {
+            if(!unmounted) {
+                props.setAppLoading(true)
+                var role = await props.fetchRole
+                props.setAuthUserRole(role)
+                props.setAppLoading(false)
+            }
+        }
+        getRole()
+        return () => {
+            unmounted = true
+        }
+    }, [])
+
     return (
+        <>
+        {props.appLoading && <LostInternetConnection />}
         <div style={{display: 'flex'}}>	
             <Navbar logo={ props.logo } onLogout={props.onLogout} isAuthenticated={props.isAuthenticated} />
             <div className="main-content" id="main-content">
@@ -224,6 +244,7 @@ const Dashboard = (props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

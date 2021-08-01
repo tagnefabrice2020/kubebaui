@@ -17,7 +17,6 @@ import EditRates from '../pages/Settings/editRates'
 import EditPermission from '../pages/UserManagement/Permissions/editPermissions'
 import EditRole from '../pages/UserManagement/Roles/editRoles'
 import NotFound from '../pages/NotFound/NotFound'
-import LostInternetConnection from '../modal/lostInternetConnection'
 import ShowEmployee from '../pages/Employees/showEmployees'
 import EditShipment from '../pages/Shippments/EditShipment'
 
@@ -27,11 +26,34 @@ const BackOfficeApp = (props) => {
     const isAuth = props.isAuthenticated
     const onLogout = props.onLogout
     const onLogin = props.onLogin
+    const myRole = props.myRole
+    const setAuthUserRole = props.setAuthUserRole
+    const fetchRole = props.fetchRole
+    const setAppLoading = props.setAppLoading
+    const appLoading = props.appLoading
+    let userRole
+    console.log(props.myRole)
+
+    const PrivateRoute = ({path_name, component: Component, logo, isAuthenticated, onLogout, role}) => {
+        if (isAuth && role.includes(userRole)) { 
+            return <Route exact strict path={path_name} render={(props) => {
+                    return <Component
+                        logo={logo}
+                        onLogout={onLogout}
+                        isAuthenticated={isAuthenticated}
+                    />
+                }}/>
+        } else if(isAuth && !role.includes(userRole)){
+            <Redirect to={{ pathname:"/notAllowed", state: { from: props.location }}}  />
+        }
+        else if(!isAuth) {
+            <Redirect to={{ pathname:"/login", state: { from: props.location }}}  />
+        }
+    }
 
     return (
 <>
-        <LostInternetConnection />
-       <Switch>
+        <Switch>
             <Route exact strict path="/show_incomming_shipments/:id" render={(props) => {
                 return isAuth ? <ShowIncomingShipment 
                     {...props}
@@ -165,8 +187,15 @@ const BackOfficeApp = (props) => {
                 return isAuth ? <Dashboard 
                                     logo={imageUrl} 
                                     onLogout={onLogout} 
-                                    isAuthenticated={isAuth}></Dashboard> : 
-                                    <Redirect to="/login" />
+                                    isAuthenticated={isAuth}
+                                    // ---
+                                    myRole={myRole}
+                                    setAuthUserRole={setAuthUserRole}
+                                    fetchRole={fetchRole}
+                                    setAppLoading={setAppLoading}
+                                    appLoading={appLoading}
+                                ></Dashboard> : 
+                                <Redirect to="/login" />
             }}/>
 
             <Route exact path="/notifications" render={(props) => {
@@ -184,11 +213,14 @@ const BackOfficeApp = (props) => {
                 return isAuth ? <Dashboard {...props} 
                                     logo={imageUrl} 
                                     onLogout={onLogout} 
-                                    isAuthenticated={isAuth}></Dashboard> : 
+                                    isAuthenticated={isAuth}
+                                    ></Dashboard> : 
                                     <Redirect to="/login" />
             }}/> 
 
             <Route path="/notFound" component={NotFound} />
+
+            <Route path="/notAllowed" component={NotFound} />
 
         </Switch> </>
     )

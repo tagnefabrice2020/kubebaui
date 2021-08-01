@@ -35,6 +35,23 @@ export const isAuthenticated = () => {
     return false
 }
 
+export const getAuthUserRole = async () => {
+    try {
+        const result = await axios.get(BASE_API_URL + '/auth/role')
+        //console.log(result)
+        if (result.status === 200) {
+            if (result.data.data[0].name) {
+                //console.log(result.data.data[0].name)
+                return result.data.data[0].name
+            } else {
+                return null
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const setAxiosToken = (token) => {
     axios.defaults.headers["Authorization"] = "Bearer " + token
 }
