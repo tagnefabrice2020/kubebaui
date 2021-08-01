@@ -94,9 +94,20 @@ const IncommingShippements = (props) => {
                         </div>
                     </div>
                     <div className="tile is-ancestor is-vertical c-t-20 box custom-container-overflow">
-                        <div className="tile is-parent">
+                        <div className="tile is-parent is-flex-direction-row is-justify-content-space-between">
                             <div className="tile is-child">
                                 <Link to="/add_shipment" className="button is-small is-primary" >New shippment &nbsp; <i className="fas fa-plus"></i></Link>
+                            </div>
+                            <div className="tile is-child is-flex-direction-row is-justify-content-space-between" style={{position: 'relative'}}>
+                                <div className="control" style={{position: 'absolute', right: '0px'}}>
+                                    <div className="select is-small">
+                                        <select onChange={(event) => handleItemsPerPage(event.target.value)} defaultValue={5}>
+                                            <option value={5}>5</option>
+                                            <option value={10}>10</option>
+                                            <option value={15}>15</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="tile is-parent is-flex-direction-column overflow-x-sm">

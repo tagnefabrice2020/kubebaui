@@ -42,7 +42,7 @@ const Shippements = (props) => {
             setLoading(true)
             setLoadingSearch(true)
             try {
-                const results = await fetchApi(GET, `/shipments/${value}`)
+                const results = await fetchApi(GET, `/shipment/search/${value}`)
                 setTotalItems(results.data.data.total)
                 setShipments(results.data.data.data)
                 setLoading(false)
@@ -51,7 +51,7 @@ const Shippements = (props) => {
                 setLoadingSearch(false)
             } 
         } else if (value.length === 0) {
-            setShipments(initialShipments)   
+            setShipments(initialShipments) 
             setTotalItems(initialTotalItems) 
         }
     }

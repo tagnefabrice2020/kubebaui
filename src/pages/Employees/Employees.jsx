@@ -28,22 +28,27 @@ const Employees = (props) => {
     const [searchLoading, setLoadingSearch] = useState(false)
 
     useEffect(() => {
+        var unmounted = false
         async function fetchEmployees () {
             setLoading(true)
             try {
                 const results = await fetchApi(GET, "/employees")
-                console.log(results)
-                setEmployees(results.data.data.data)
-                setTotalItems(results.data.data.total)
-                setInitialEmployees(results.data.data.data)
-                setInitialTotalItems(results.data.data.total)
-                setLoading(false)
+                if(!unmounted) {
+                    setEmployees(results.data.data.data)
+                    setTotalItems(results.data.data.total)
+                    setInitialEmployees(results.data.data.data)
+                    setInitialTotalItems(results.data.data.total)
+                    setLoading(false)
+                }
             } catch (error) {
                 console.log(error)
                 setLoading(false)
             }
         }
         fetchEmployees()
+        return () => {
+            unmounted = true
+        }
     }, [])
 
     useEffect(() => {
@@ -319,7 +324,7 @@ const Employees = (props) => {
                                                 <div className="control">
                                                     <div className="select is-small">
                                                         <select onChange={(event) => handleItemsPerPage(event.target.value)} defaultValue={5}>
-                                                            <option selected value={5}>5</option>
+                                                            <option value={5}>5</option>
                                                             <option value={10}>10</option>
                                                             <option value={15}>15</option>
                                                         </select>

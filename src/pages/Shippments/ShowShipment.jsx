@@ -146,7 +146,7 @@ const Shippements = (props) => {
                                     {parcelsBranch.map((parcel, index) => 
                                         <tr key={parcel.id} className={checkBoxStatus(parcel.id) === true ? `is-selected` : null}>
                                             <td><input type="checkbox" {...register('parcels')} defaultValue={parcel.id} defaultChecked={checkBoxStatus(parcel.id)} /></td>
-                                            <th>{index +1}</th>
+                                            <th>{parcel.id}</th>
                                             <td>{parcel.first_name} {parcel.last_name}</td>
                                             <td>{parcel.city_branch_name}</td>
                                             <td>{parcel.to_branch_name}</td>

@@ -8,20 +8,20 @@ import { toast } from 'react-toastify'
 
 const Documents = (props) => {
     const [documents, setDocuments] = useState([])
-    const [initialDocuments, setInititalDocuments] = useState()
+    const [initialDocuments, setInititalDocuments] = useState([])
     const [totalItems, setTotalItems] = useState()
     const [initialTotalItems, setInitialTotalItems] = useState()
     const [loading, setLoading] = useState(false)
     const [search, setSearch] = useState("")
     const [searchLoading, setLoadingSearch] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(5)
+    const [itemsPerPage] = useState(5)
 
     useEffect(() => {
         async function getDocuments (){
             try {
                 setLoading(true)
-                const results = search !== "" ? await fetchApi(GET, `/auth/admins/identity_proofs/${search}/search?page=${currentPage}&per_page=${itemsPerPage}`) : await fetchApi(GET, `/auth/admins/get_all_proofs?page=${currentPage}&per_page=${itemsPerPage}`)
+                const results = search !== "" ? await fetchApi(GET, `/documents/${search}?page=${currentPage}&per_page=${itemsPerPage}`) : await fetchApi(GET, `/documents?page=${currentPage}&per_page=${itemsPerPage}`)
                 setDocuments(results.data.data.data)
                 setInititalDocuments(results.data.data.data)
                 setTotalItems(results.data.data.total)
@@ -30,7 +30,7 @@ const Documents = (props) => {
             } catch (error) {
                 setLoading(false)
                 if(!error.response) {
-                    toast.error('Ooops, check your internet connection!')
+                    //toast.error('Ooops, check your internet connection!')
                 } else if (error.response.status === 500) {
                     toast.error(error.response.message)
                 } 
@@ -52,12 +52,17 @@ const Documents = (props) => {
             setLoading(true)
             setLoadingSearch(true)
             try {
-                const results = await fetchApi(GET, `/auth/admins/identity_proofs/${value}/search?page=${currentPage}&per_page=${itemsPerPage}`)
+                const results = await fetchApi(GET, `/documents/${search}?page=${currentPage}&per_page=${itemsPerPage}`)
                 setTotalItems(results.data.data.total)
                 setDocuments(results.data.data.data)
                 setLoading(false)
                 setLoadingSearch(false)
             } catch (error) {
+                setLoading(false)
+                console.log(error.response)
+                if (error.response.status === 500) {
+                    toast.error('Ooops something went wrong')
+                } 
                 setLoadingSearch(false)
             } 
         } else if (value.length === 0) {
